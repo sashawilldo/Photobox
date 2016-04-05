@@ -14,41 +14,59 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="KDF-QP-uhI" kind="relationship" relationship="rootViewController" id="Zq7-JT-nir"/>
+                        <segue destination="93T-Qv-kp5" kind="relationship" relationship="rootViewController" id="yNl-j1-Xn3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rth-sQ-a3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="-229"/>
+            <point key="canvasLocation" x="594" y="-165"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="hXa-6P-VZA">
+        <!--Home Table View Controller-->
+        <scene sceneID="1Ip-3d-hMa">
             <objects>
-                <tableViewController id="KDF-QP-uhI" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dnj-Bf-6W0">
+                <tableViewController id="93T-Qv-kp5" customClass="HomeTableViewController" customModule="Photobox" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hzr-co-j9V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qeZ-Kl-zsg">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="3RW-RA-tWU">
+                                <rect key="frame" x="0.0" y="92" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qeZ-Kl-zsg" id="4je-hG-qna">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3RW-RA-tWU" id="J6c-eM-Qn0">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymD-Yt-5yK">
+                                            <rect key="frame" x="90" y="53" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj0-Pq-hjJ">
+                                            <rect key="frame" x="90" y="24" width="172" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="KDF-QP-uhI" id="CkG-jj-Pyb"/>
-                            <outlet property="delegate" destination="KDF-QP-uhI" id="aj2-bu-Kys"/>
+                            <outlet property="dataSource" destination="93T-Qv-kp5" id="HBy-9p-m9Z"/>
+                            <outlet property="delegate" destination="93T-Qv-kp5" id="7Tp-Ae-LqB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home" id="yoD-Yl-if1"/>
+                    <navigationItem key="navigationItem" id="ObX-Nw-LFo"/>
+                    <connections>
+                        <outlet property="冊子名標籤" destination="Nj0-Pq-hjJ" id="yDb-kQ-9xT"/>
+                        <outlet property="項目數量標籤" destination="ymD-Yt-5yK" id="sYA-5p-hyI"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e4y-yb-o5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XfH-2G-mgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="-229"/>
+            <point key="canvasLocation" x="1022" y="-165"/>
         </scene>
     </scenes>
 </document>

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DC0C48F1CB40A57006AB93E /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC0C48E1CB40A57006AB93E /* HomeTableViewController.swift */; };
 		FC9182461CB2B78F0054018E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9182451CB2B78F0054018E /* AppDelegate.swift */; };
-		FC9182481CB2B78F0054018E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9182471CB2B78F0054018E /* ViewController.swift */; };
 		FC91824B1CB2B78F0054018E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9182491CB2B78F0054018E /* Main.storyboard */; };
 		FC91824D1CB2B78F0054018E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC91824C1CB2B78F0054018E /* Assets.xcassets */; };
 		FC9182501CB2B78F0054018E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC91824E1CB2B78F0054018E /* LaunchScreen.storyboard */; };
@@ -26,9 +26,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DC0C48E1CB40A57006AB93E /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		FC9182421CB2B78F0054018E /* Photobox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photobox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9182451CB2B78F0054018E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC9182471CB2B78F0054018E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC91824A1CB2B78F0054018E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC91824C1CB2B78F0054018E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC91824F1CB2B78F0054018E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				FC9182451CB2B78F0054018E /* AppDelegate.swift */,
-				FC9182471CB2B78F0054018E /* ViewController.swift */,
 				FC9182491CB2B78F0054018E /* Main.storyboard */,
+				5DC0C48E1CB40A57006AB93E /* HomeTableViewController.swift */,
 				FC91824C1CB2B78F0054018E /* Assets.xcassets */,
 				FC91824E1CB2B78F0054018E /* LaunchScreen.storyboard */,
 				FC9182511CB2B78F0054018E /* Info.plist */,
@@ -199,7 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC9182481CB2B78F0054018E /* ViewController.swift in Sources */,
+				5DC0C48F1CB40A57006AB93E /* HomeTableViewController.swift in Sources */,
 				FC9182461CB2B78F0054018E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,10 +331,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Photobox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Photobox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -342,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Photobox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Photobox;
@@ -392,6 +395,7 @@
 				FC9182611CB2B78F0054018E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC9182621CB2B78F0054018E /* Build configuration list for PBXNativeTarget "PhotoboxTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +404,7 @@
 				FC9182641CB2B78F0054018E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
