@@ -1,5 +1,5 @@
 //
-//  HomeTableViewController.swift
+//  FolderTableViewController.swift
 //  Photobox
 //
 //  Created by yi shing wong on 16/4/2016.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class FolderTableViewController: UITableViewController {
 
     // MARK: Properties
-    var folders = [Folder()]
+    var images = [Image()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,8 @@ class HomeTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +37,13 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return folders.count
+        return images.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = "homeTableViewCell"
         
+        let identifier = "folderTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
 
         // Configure the cell...
