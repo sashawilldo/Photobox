@@ -9,6 +9,15 @@
 import UIKit
 
 class Image {
-    var name = ""
-    var image = UIImage()
+    var name:String
+    var image:UIImage?
+    
+    init?(name: String, image: UIImage?) {
+        self.name = name
+        self.image = image
+        
+        if name.isEmpty {
+            return nil
+        }
+    }
 }

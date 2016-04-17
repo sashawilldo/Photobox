@@ -39,7 +39,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="C9T-Yh-bYe" kind="push" id="InF-3w-VYa"/>
+                                    <segue destination="rIq-UO-spS" kind="push" id="Ipb-NQ-q6I"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,42 +59,54 @@
             </objects>
             <point key="canvasLocation" x="983" y="-165"/>
         </scene>
-        <!--Images-->
-        <scene sceneID="As2-2R-PF6">
+        <!--Folder Collection View Controller-->
+        <scene sceneID="TJT-m6-71B">
             <objects>
-                <tableViewController id="C9T-Yh-bYe" customClass="FolderTableViewController" customModule="Photobox" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fEF-zn-ThW">
+                <collectionViewController id="rIq-UO-spS" customClass="FolderCollectionViewController" customModule="Photobox" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Uul-Y6-HE8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="folderTableViewCell" id="958-j3-6cy">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="958-j3-6cy" id="S0v-Jp-c9a">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.5" minimumInteritemSpacing="0.5" id="P6U-79-ff8">
+                            <size key="itemSize" width="79.5" height="79.5"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gfd-qG-9Uw" customClass="ImageCollectionViewCell" customModule="Photobox" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="79.5" height="79.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="79.5" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sYb-2c-RHI">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="79.5" height="79.5"/>
                                 <connections>
-                                    <segue destination="qPf-kz-h8h" kind="push" id="5DG-DN-tmQ"/>
+                                    <segue destination="qPf-kz-h8h" kind="push" identifier="showDetail" id="akw-3Z-t5n"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="C9T-Yh-bYe" id="F5I-k3-u8T"/>
-                            <outlet property="delegate" destination="C9T-Yh-bYe" id="6YK-rg-uP3"/>
+                            <outlet property="dataSource" destination="rIq-UO-spS" id="OVj-CK-hNd"/>
+                            <outlet property="delegate" destination="rIq-UO-spS" id="Xbt-gQ-SEu"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Images" id="8IG-vK-7Ww"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gn6-pY-NhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="YaK-xD-aoz"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vaF-Ha-e9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1394" y="-165"/>
+            <point key="canvasLocation" x="1392" y="-165"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="muw-NB-Ewq">
             <objects>
-                <viewController id="qPf-kz-h8h" sceneMemberID="viewController">
+                <viewController id="qPf-kz-h8h" customClass="ImageViewController" customModule="Photobox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WPR-Qf-CkT"/>
                         <viewControllerLayoutGuide type="bottom" id="AJa-Rs-6aN"/>
@@ -104,18 +116,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" highlightedImage="1" translatesAutoresizingMaskIntoConstraints="NO" id="rl6-1y-Byo">
-                                <rect key="frame" x="16" y="72" width="288" height="444"/>
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                                <gestureRecognizers/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rl6-1y-Byo" firstAttribute="leading" secondItem="hVQ-wV-Wpy" secondAttribute="leadingMargin" id="Cz2-m2-Rc6"/>
-                            <constraint firstItem="AJa-Rs-6aN" firstAttribute="top" secondItem="rl6-1y-Byo" secondAttribute="bottom" constant="8" id="Wzt-5a-AK1"/>
-                            <constraint firstItem="rl6-1y-Byo" firstAttribute="top" secondItem="WPR-Qf-CkT" secondAttribute="bottom" constant="8" id="XEp-Zt-Xey"/>
-                            <constraint firstItem="rl6-1y-Byo" firstAttribute="trailing" secondItem="hVQ-wV-Wpy" secondAttribute="trailingMargin" id="yF3-7N-JhA"/>
+                            <constraint firstItem="rl6-1y-Byo" firstAttribute="leading" secondItem="hVQ-wV-Wpy" secondAttribute="leadingMargin" constant="-20" id="Cz2-m2-Rc6"/>
+                            <constraint firstItem="AJa-Rs-6aN" firstAttribute="top" secondItem="rl6-1y-Byo" secondAttribute="bottom" constant="-44" id="Wzt-5a-AK1"/>
+                            <constraint firstItem="rl6-1y-Byo" firstAttribute="top" secondItem="WPR-Qf-CkT" secondAttribute="bottom" constant="-64" id="XEp-Zt-Xey"/>
+                            <constraint firstItem="rl6-1y-Byo" firstAttribute="trailing" secondItem="hVQ-wV-Wpy" secondAttribute="trailingMargin" constant="20" id="yF3-7N-JhA"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="RW0-m2-Nnk"/>
+                        <barButtonItem width="240" style="plain" systemItem="fixedSpace" id="sWp-sm-Fze"/>
+                        <barButtonItem systemItem="trash" id="9gb-wf-ckT"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="T1v-mn-4QU"/>
+                    <connections>
+                        <outlet property="imageView" destination="rl6-1y-Byo" id="ZWJ-kq-kZY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1S-s6-WHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
