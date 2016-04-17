@@ -41,9 +41,9 @@ class ImageViewController: UIViewController {
 //        self.imageView.transform = CGAffineTransformMakeScale(s.scale, s.scale)
         
         
-        var scale: CGFloat = pinch.scale;
-        self.imageView.transform = CGAffineTransformScale(self.imageView.transform, scale, scale);
-        pinch.scale = 1.0;
+        var scale: CGFloat = pinch.scale
+        self.imageView.transform = CGAffineTransformScale(self.imageView.transform, scale, scale)
+        pinch.scale = 1.0
     }
     
 

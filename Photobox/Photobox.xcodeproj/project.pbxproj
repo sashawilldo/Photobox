@@ -13,11 +13,11 @@
 		FC404B151CC284EE00C6C8B1 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC404B141CC284EE00C6C8B1 /* ImageViewController.swift */; };
 		FC9182461CB2B78F0054018E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9182451CB2B78F0054018E /* AppDelegate.swift */; };
 		FC91824B1CB2B78F0054018E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9182491CB2B78F0054018E /* Main.storyboard */; };
-		FC91824D1CB2B78F0054018E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC91824C1CB2B78F0054018E /* Assets.xcassets */; };
 		FC9182501CB2B78F0054018E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC91824E1CB2B78F0054018E /* LaunchScreen.storyboard */; };
 		FC91825B1CB2B78F0054018E /* PhotoboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91825A1CB2B78F0054018E /* PhotoboxTests.swift */; };
 		FCB25E961CC37F1A00188310 /* FolderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB25E951CC37F1A00188310 /* FolderCollectionViewController.swift */; };
 		FCB25E981CC3885100188310 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB25E971CC3885100188310 /* ImageCollectionViewCell.swift */; };
+		FCB25E9A1CC39F7900188310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB25E991CC39F7900188310 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		FC9182421CB2B78F0054018E /* Photobox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photobox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9182451CB2B78F0054018E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC91824A1CB2B78F0054018E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FC91824C1CB2B78F0054018E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC91824F1CB2B78F0054018E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC9182511CB2B78F0054018E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC9182561CB2B78F0054018E /* PhotoboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +45,7 @@
 		FC91825C1CB2B78F0054018E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCB25E951CC37F1A00188310 /* FolderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewController.swift; sourceTree = "<group>"; };
 		FCB25E971CC3885100188310 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCB25E991CC39F7900188310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +93,11 @@
 				FCB25E951CC37F1A00188310 /* FolderCollectionViewController.swift */,
 				FCB25E971CC3885100188310 /* ImageCollectionViewCell.swift */,
 				FC404B141CC284EE00C6C8B1 /* ImageViewController.swift */,
-				FC91824C1CB2B78F0054018E /* Assets.xcassets */,
 				FC404B041CC2802C00C6C8B1 /* Folder.swift */,
 				FC404B061CC2808200C6C8B1 /* Image.swift */,
 				FC91824E1CB2B78F0054018E /* LaunchScreen.storyboard */,
 				FC9182511CB2B78F0054018E /* Info.plist */,
+				FCB25E991CC39F7900188310 /* Assets.xcassets */,
 			);
 			path = Photobox;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC9182501CB2B78F0054018E /* LaunchScreen.storyboard in Resources */,
-				FC91824D1CB2B78F0054018E /* Assets.xcassets in Resources */,
+				FCB25E9A1CC39F7900188310 /* Assets.xcassets in Resources */,
 				FC91824B1CB2B78F0054018E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
