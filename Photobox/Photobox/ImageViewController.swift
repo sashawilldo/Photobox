@@ -10,16 +10,16 @@ import UIKit
 
 class ImageViewController: UIViewController {
 
+    // MARK: Properties
     var image: Image?
     
+    
+    // MARK: Outlets
     @IBOutlet weak var imageView: UIImageView!
     
-    var pinch = UIPinchGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         image = Image(name: "poster", image: UIImage(named:"1"))
         if let image = image{
@@ -27,9 +27,9 @@ class ImageViewController: UIViewController {
             navigationItem.title = image.name
         }
         
-        self.pinch = UIPinchGestureRecognizer(target: self, action: #selector(ImageViewController.Pinch(_:)))
-        self.imageView.addGestureRecognizer(self.pinch)
+        self.initializeGestureRecognizer()
 
+        // shouldrecognisesemultanously
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,15 +37,40 @@ class ImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func Pinch(s: UIPinchGestureRecognizer) {
-//        self.imageView.transform = CGAffineTransformMakeScale(s.scale, s.scale)
+    func initializeGestureRecognizer() {
+        let pinchGesture: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(ImageViewController.recognizePinchGesture(_:)))
+        imageView.addGestureRecognizer(pinchGesture)
         
-        
-        var scale: CGFloat = pinch.scale
-        self.imageView.transform = CGAffineTransformScale(self.imageView.transform, scale, scale)
-        pinch.scale = 1.0
     }
     
+    func recognizePinchGesture(sender: UIPinchGestureRecognizer) {
+        
+        if let floatValue = imageView.layer.valueForKeyPath("transform.scale")?.floatValue where floatValue <= 2.0 {
+            sender.view?.transform = CGAffineTransformScale(sender.view!.transform, sender.scale, sender.scale)
+            sender.scale = 1
+            print("proper size: \(imageView.layer.valueForKeyPath("transform.scale")?.floatValue)")
+        } else {
+            UIView.animateWithDuration(0.5, animations: {
+                self.imageView.transform = CGAffineTransformMakeScale(2.0, 2.0)
+            })
+            print("oversized: \(imageView.layer.valueForKeyPath("transform.scale")?.floatValue)")
+        }
+    
+//        sender.state == .Ended
+        
+        
+//        print(imageView.bounds)
+//        print(imageView.layer.valueForKeyPath("transform.scale")?.floatValue)
+        
+        
+//        if (imageView.bounds.height < 1000) {
+//            sender.view?.transform = CGAffineTransformScale(sender.view!.transform, sender.scale, sender.scale)
+//        }
+        
+//        sender.view?.transform = CGAffineTransformMakeScale(sender.scale, sender.scale)
+        
+//        print(sender.view?.transform)
+    }
 
     /*
     // MARK: - Navigation

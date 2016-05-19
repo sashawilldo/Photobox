@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qPf-kz-h8h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dTb-gq-vbr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -66,29 +67,38 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Uul-Y6-HE8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.5" minimumInteritemSpacing="0.5" id="P6U-79-ff8">
-                            <size key="itemSize" width="79.5" height="79.5"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="P6U-79-ff8">
+                            <size key="itemSize" width="93" height="93"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gfd-qG-9Uw" customClass="ImageCollectionViewCell" customModule="Photobox" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="79.5" height="79.5"/>
+                                <rect key="frame" x="0.0" y="64" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="79.5" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sYb-2c-RHI">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sYb-2c-RHI">
+                                            <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="sYb-2c-RHI" secondAttribute="height" multiplier="1:1" id="KmQ-Lz-l45"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <size key="customSize" width="79.5" height="79.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="sYb-2c-RHI" secondAttribute="bottom" id="7Tm-o1-0IQ"/>
+                                    <constraint firstItem="sYb-2c-RHI" firstAttribute="leading" secondItem="gfd-qG-9Uw" secondAttribute="leading" id="Gfi-Qd-8ae"/>
+                                    <constraint firstItem="sYb-2c-RHI" firstAttribute="top" secondItem="gfd-qG-9Uw" secondAttribute="top" id="Jeh-Ju-uKc"/>
+                                </constraints>
+                                <size key="customSize" width="93" height="93"/>
                                 <connections>
-                                    <segue destination="qPf-kz-h8h" kind="push" identifier="showDetail" id="akw-3Z-t5n"/>
+                                    <outlet property="imageView" destination="sYb-2c-RHI" id="9hb-QH-tlh"/>
+                                    <segue destination="qPf-kz-h8h" kind="push" identifier="cell" id="tyX-0A-eJ1"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -101,7 +111,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaF-Ha-e9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="-165"/>
+            <point key="canvasLocation" x="1455" y="-165"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="muw-NB-Ewq">
@@ -128,11 +138,7 @@
                             <constraint firstItem="rl6-1y-Byo" firstAttribute="trailing" secondItem="hVQ-wV-Wpy" secondAttribute="trailingMargin" constant="20" id="yF3-7N-JhA"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="action" id="RW0-m2-Nnk"/>
-                        <barButtonItem width="240" style="plain" systemItem="fixedSpace" id="sWp-sm-Fze"/>
-                        <barButtonItem systemItem="trash" id="9gb-wf-ckT"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="T1v-mn-4QU"/>
                     <connections>
                         <outlet property="imageView" destination="rl6-1y-Byo" id="ZWJ-kq-kZY"/>
@@ -140,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1S-s6-WHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="-165"/>
+            <point key="canvasLocation" x="1869" y="-165"/>
         </scene>
     </scenes>
     <resources>

@@ -12,20 +12,18 @@ private let reuseIdentifier = "cell"
 
 class FolderCollectionViewController: UICollectionViewController {
     
-    var cellColor = true
     
+    // MARK: Properties
+    var cellColor = true
     var images = [Image]()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,19 +58,24 @@ class FolderCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return 5
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
     
         // Configure the cell
-        cell.backgroundColor = cellColor ? UIColor.redColor() : UIColor.blueColor()
+        cell.backgroundColor = cellColor ? UIColor.whiteColor() : UIColor.yellowColor()
+        
         cellColor = !cellColor
     
+        print("height: \(cell.frame.height)")
+        print("size.height: \(cell.frame.size.height)")
+        
         return cell
     }
 
+    
     // MARK: UICollectionViewDelegate
 
     /*
@@ -82,12 +85,19 @@ class FolderCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    */
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("select")
+        performSegueWithIdentifier("cell", sender: self)
+        
+        var vc = HomeTableViewController()
+    }
+    
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
