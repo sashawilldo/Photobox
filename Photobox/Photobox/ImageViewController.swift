@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageViewController: UIViewController {
+class ImageViewController: UIViewController, UIGestureRecognizerDelegate {
 
     // MARK: Properties
     var image: Image?
@@ -28,8 +28,7 @@ class ImageViewController: UIViewController {
         }
         
         self.initializeGestureRecognizer()
-
-        // shouldrecognisesemultanously
+        self.view.multipleTouchEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,39 +38,58 @@ class ImageViewController: UIViewController {
     
     func initializeGestureRecognizer() {
         let pinchGesture: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(ImageViewController.recognizePinchGesture(_:)))
+        let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ImageViewController.recognisePanGesture(_:)))
         imageView.addGestureRecognizer(pinchGesture)
-        
+        imageView.addGestureRecognizer(panGesture)
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
+                                    shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     func recognizePinchGesture(sender: UIPinchGestureRecognizer) {
-        
-        if let floatValue = imageView.layer.valueForKeyPath("transform.scale")?.floatValue where floatValue <= 2.0 {
-            sender.view?.transform = CGAffineTransformScale(sender.view!.transform, sender.scale, sender.scale)
-            sender.scale = 1
-            print("proper size: \(imageView.layer.valueForKeyPath("transform.scale")?.floatValue)")
-        } else {
-            UIView.animateWithDuration(0.5, animations: {
-                self.imageView.transform = CGAffineTransformMakeScale(2.0, 2.0)
+        // if let floatValue = imageView.layer.valueForKeyPath("transform.scale")?.floatValue where floatValue <= 2.0 {
+        sender.delegate = self
+        if let view = sender.view {
+            UIView.animateWithDuration(0.07,animations: {
+                view.transform = CGAffineTransformScale(view.transform, sender.scale, sender.scale)
+                sender.scale = 1
+                if sender.state == .Ended {
+                    self.resetImageToProperViewingSizeIfExceeded(view.transform.a)
+                }
             })
-            print("oversized: \(imageView.layer.valueForKeyPath("transform.scale")?.floatValue)")
         }
-    
-//        sender.state == .Ended
-        
-        
-//        print(imageView.bounds)
-//        print(imageView.layer.valueForKeyPath("transform.scale")?.floatValue)
-        
-        
-//        if (imageView.bounds.height < 1000) {
-//            sender.view?.transform = CGAffineTransformScale(sender.view!.transform, sender.scale, sender.scale)
-//        }
-        
-//        sender.view?.transform = CGAffineTransformMakeScale(sender.scale, sender.scale)
-        
-//        print(sender.view?.transform)
+        //}
     }
 
+    func recognisePanGesture(sender: UIPanGestureRecognizer) {
+        sender.delegate = self
+        sender.maximumNumberOfTouches = 2
+        let translation = sender.translationInView(self.view)
+        if let view = sender.view {
+            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+        }
+        sender.setTranslation(CGPointZero, inView: self.view)
+    }
+    
+    func resetImageToProperViewingSizeIfExceeded(a: CGFloat) {
+        if a >= 2.16 {
+            UIView.animateWithDuration(0.1, animations: {
+                // self.imageView.transform = CGAffineTransformMakeScale(2.0, 2.0)
+                self.imageView.transform = CGAffineTransform(a: 2.76, b: 0, c: 0, d: 2.76, tx: 0.0, ty: 0.0)
+            })
+        } else if a <= 1 {
+            UIView.animateWithDuration(0.1, animations: {
+                self.imageView.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 1.0, tx: 0.0, ty: 0.0)
+            })
+        }
+    }
+    
+    //    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    //        print("touches ended")
+    //    }
+    
     /*
     // MARK: - Navigation
 
