@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -125,18 +124,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" highlightedImage="1" translatesAutoresizingMaskIntoConstraints="NO" id="rl6-1y-Byo">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2" highlightedImage="1" translatesAutoresizingMaskIntoConstraints="NO" id="rl6-1y-Byo">
                                 <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
                                 <gestureRecognizers/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rl6-1y-Byo" firstAttribute="leading" secondItem="hVQ-wV-Wpy" secondAttribute="leadingMargin" constant="-20" id="Cz2-m2-Rc6"/>
-                            <constraint firstItem="AJa-Rs-6aN" firstAttribute="top" secondItem="rl6-1y-Byo" secondAttribute="bottom" constant="-44" id="Wzt-5a-AK1"/>
-                            <constraint firstItem="rl6-1y-Byo" firstAttribute="top" secondItem="WPR-Qf-CkT" secondAttribute="bottom" constant="-64" id="XEp-Zt-Xey"/>
-                            <constraint firstItem="rl6-1y-Byo" firstAttribute="trailing" secondItem="hVQ-wV-Wpy" secondAttribute="trailingMargin" constant="20" id="yF3-7N-JhA"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="T1v-mn-4QU"/>
@@ -150,7 +143,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="58" height="58"/>
+        <image name="1" width="600" height="434"/>
         <image name="2" width="960" height="540"/>
     </resources>
 </document>

@@ -24,6 +24,14 @@ class ImageViewController: UIViewController, UIGestureRecognizerDelegate {
         image = Image(name: "poster", image: UIImage(named:"1"))
         if let image = image{
             imageView.image = image.image
+            
+            var oldFrame = imageView.frame
+            let aspectRatio:CGFloat = (image.image?.size.height)! / (image.image?.size.width)!
+            oldFrame.size = CGSize(width: view.frame.width, height: view.frame.width * aspectRatio)
+            imageView.frame = oldFrame
+            imageView.center = CGPoint(x: view.center.x, y: view.center.y)
+            imageView.translatesAutoresizingMaskIntoConstraints = true
+            
             navigationItem.title = image.name
         }
         
@@ -39,8 +47,10 @@ class ImageViewController: UIViewController, UIGestureRecognizerDelegate {
     func initializeGestureRecognizer() {
         let pinchGesture: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(ImageViewController.recognizePinchGesture(_:)))
         let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ImageViewController.recognisePanGesture(_:)))
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.recognizeTapGesture(_:)))
         imageView.addGestureRecognizer(pinchGesture)
         imageView.addGestureRecognizer(panGesture)
+        imageView.addGestureRecognizer(tapGesture)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
@@ -48,19 +58,47 @@ class ImageViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
+    func recognizeTapGesture(sender: UITapGestureRecognizer) {
+        if let navigationController = self.navigationController {
+            UIView.animateWithDuration(0.5, animations: {
+                if navigationController.navigationBarHidden == true {
+                    self.view.backgroundColor = UIColor(white: 1, alpha: 1.0)
+                    navigationController.setNavigationBarHidden(false, animated: false)
+                    UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
+                } else {
+                    self.view.backgroundColor = UIColor(white: 1, alpha: 0.0)
+                    navigationController.setNavigationBarHidden(true, animated: false)
+                    UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
+                }
+            })
+        }
+    }
+    
     func recognizePinchGesture(sender: UIPinchGestureRecognizer) {
         // if let floatValue = imageView.layer.valueForKeyPath("transform.scale")?.floatValue where floatValue <= 2.0 {
         sender.delegate = self
         if let view = sender.view {
-            UIView.animateWithDuration(0.07,animations: {
+            UIView.animateWithDuration(0.07, animations: {
                 view.transform = CGAffineTransformScale(view.transform, sender.scale, sender.scale)
+                
+//                let touch1 = sender.locationOfTouch(0, inView: view)
+//                print("touch1 = \(touch1)")
+//                let touch2 = sender.locationOfTouch(1, inView: view)
+//                print("touch2 = \(touch2)")
+
+                
+                view.layer.anchorPoint = touch1
+//                    CGPointMake(sender.locationOfTouch(0, inView: self.view), sender.locationOfTouch(1, inView: self.view))
+                
+//                var touch = CGPoint(sender.locationOfTouch(<#T##touchIndex: Int##Int#>, inView: <#T##UIView?#>))
+                
                 sender.scale = 1
+                
                 if sender.state == .Ended {
-                    self.resetImageToProperViewingSizeIfExceeded(view.transform.a)
+                    self.resetImageToProperViewingSizeIfExceeded(view)
                 }
             })
         }
-        //}
     }
 
     func recognisePanGesture(sender: UIPanGestureRecognizer) {
@@ -69,19 +107,33 @@ class ImageViewController: UIViewController, UIGestureRecognizerDelegate {
         let translation = sender.translationInView(self.view)
         if let view = sender.view {
             view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+            UIView.animateWithDuration(0.3, animations: {
+                if sender.state == .Ended {
+                    if view.frame.width <= self.view.frame.width {
+                        view.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+                    } else if view.frame.origin.x > 0 {
+                        view.frame.origin.x = 0
+                        view.translatesAutoresizingMaskIntoConstraints = true
+                    } else if view.frame.origin.x + view.frame.width < self.view.frame.width {
+                        let v = self.view.frame.width - (view.frame.origin.x + view.frame.width)
+                        view.frame.origin.x = view.frame.origin.x + v
+                    }
+                }
+            })
         }
         sender.setTranslation(CGPointZero, inView: self.view)
     }
     
-    func resetImageToProperViewingSizeIfExceeded(a: CGFloat) {
+    func resetImageToProperViewingSizeIfExceeded(view: UIView) {
+        let a = view.transform.a
         if a >= 2.16 {
-            UIView.animateWithDuration(0.1, animations: {
-                // self.imageView.transform = CGAffineTransformMakeScale(2.0, 2.0)
-                self.imageView.transform = CGAffineTransform(a: 2.76, b: 0, c: 0, d: 2.76, tx: 0.0, ty: 0.0)
+            UIView.animateWithDuration(0.5, animations: {
+                view.transform = CGAffineTransform(a: 3.76, b: 0, c: 0, d: 3.76, tx: 0.0, ty: 0.0)
             })
         } else if a <= 1 {
             UIView.animateWithDuration(0.1, animations: {
-                self.imageView.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 1.0, tx: 0.0, ty: 0.0)
+                view.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 1.0, tx: 0.0, ty: 0.0)
+                view.center = CGPoint(x: view.center.x, y: view.center.y)
             })
         }
     }

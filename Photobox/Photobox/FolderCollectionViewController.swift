@@ -69,8 +69,8 @@ class FolderCollectionViewController: UICollectionViewController {
         
         cellColor = !cellColor
     
-        print("height: \(cell.frame.height)")
-        print("size.height: \(cell.frame.size.height)")
+//        print("height: \(cell.frame.height)")
+//        print("size.height: \(cell.frame.size.height)")
         
         return cell
     }
@@ -92,7 +92,7 @@ class FolderCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("select")
+//        print("select")
         performSegueWithIdentifier("cell", sender: self)
         
         var vc = HomeTableViewController()
